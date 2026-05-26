@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>Focus Timer</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="overlay">
+
+  <h1>Focus Timer</h1>
+
+  <div class="circle">
+    <svg width="220" height="220">
+      <circle cx="110" cy="110" r="100" class="bg"></circle>
+      <circle cx="110" cy="110" r="100" class="progress" id="progressCircle"></circle>
+    </svg>
+
+    <div id="timer">25:00</div>
+  </div>
+
+  <div class="buttons">
+    <button id="startBtn">スタート</button>
+    <button id="stopBtn">停止</button>
+  </div>
+
+  <h2 id="studyTime">今日の勉強時間: 0分</h2>
+
+  <div class="task-area">
+    <input type="text" id="taskInput" placeholder="タスク入力">
+    <button id="addTaskBtn">追加</button>
+
+    <ul id="taskList"></ul>
+  </div>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
