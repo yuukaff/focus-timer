@@ -1,0 +1,90 @@
+body {
+  margin: 0;
+  height: 100vh;
+  font-family: sans-serif;
+
+  background-image: url("images/bg.jpg");
+  background-size: cover;
+  background-position: center;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.overlay {
+  background: rgba(0,0,0,0.5);
+  padding: 40px;
+  border-radius: 30px;
+  text-align: center;
+  color: white;
+  width: 400px;
+  backdrop-filter: blur(10px);
+}
+
+.circle {
+  position: relative;
+  width: 220px;
+  height: 220px;
+  margin: auto;
+}
+
+svg {
+  transform: rotate(-90deg);
+}
+
+circle {
+  fill: none;
+  stroke-width: 10;
+}
+
+.bg {
+  stroke: rgba(255,255,255,0.2);
+}
+
+.progress {
+  stroke: white;
+  stroke-linecap: round;
+
+  stroke-dasharray: 628;
+  stroke-dashoffset: 0;
+
+  transition: stroke-dashoffset 1s linear;
+}
+
+#timer {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  font-size: 48px;
+}
+
+button {
+  margin: 10px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+input {
+  padding: 10px;
+  width: 70%;
+  border-radius: 10px;
+  border: none;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  background: rgba(255,255,255,0.2);
+  margin: 10px 0;
+  padding: 10px;
+  border-radius: 10px;
+}
