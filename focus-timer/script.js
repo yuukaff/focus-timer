@@ -53,7 +53,7 @@ function startTimer() {
 
       clearInterval(timerId);
 
-      alert("集中時間終了！");
+      alert("休憩しよ〜〜");
     }
 
   }, 1000);
@@ -78,11 +78,29 @@ function loadTasks() {
 
   taskList.innerHTML = "";
 
-  tasks.forEach(task => {
+  tasks.forEach((task, index) => {
 
     const li = document.createElement("li");
 
     li.textContent = task;
+
+    const deleteBtn =
+      document.createElement("button");
+
+    deleteBtn.textContent = "完了";
+
+    deleteBtn.classList.add("delete-btn");
+
+    deleteBtn.addEventListener("click", () => {
+
+      tasks.splice(index, 1);
+
+      saveTasks(tasks);
+
+      loadTasks();
+    });
+
+    li.appendChild(deleteBtn);
 
     taskList.appendChild(li);
   });
@@ -105,9 +123,56 @@ addTaskBtn.addEventListener("click", () => {
 
   taskInput.value = "";
 });
+const calendar = document.getElementById("calendar");
 
-loadTasks();
+function saveDailyRecord() {
 
-updateDisplay();
+  const today =
+    new Date().toLocaleDateString();
 
-updateStudyTime();
+  let records =
+    JSON.parse(localStorage.getItem("records")) || {};
+
+  records[today] = studySeconds;
+
+  localStorage.setItem(
+    "records",
+    JSON.stringify(records)
+  );
+}
+
+function loadCalendar() {
+
+  const records =
+    JSON.parse(localStorage.getItem("records")) || {};
+
+  calendar.innerHTML = "";
+
+  Object.entries(records)
+    .reverse()
+    .forEach(([date, seconds]) => {
+
+      const div =
+        document.createElement("div");
+
+      div.classList.add("calendar-day");
+
+      const mins =
+        Math.floor(seconds / 60);
+
+      div.textContent =
+        `${date} : ${mins}分`;
+
+      calendar.appendChild(div);
+    });
+}
+
+setInterval(() => {
+
+  saveDailyRecord();
+
+  loadCalendar();
+
+}, 5000);
+
+loadCalendar();
